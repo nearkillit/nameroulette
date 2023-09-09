@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.js" defer></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="bg-black h-20 flex items-center justify-between p-4">
+        <div class="relative" x-data="{ isOpen:false }" @click.away="isOpen = false" @keydown.escape="isOpen = false">
+            <button class="text-white focus:outline-none" @click="isOpen = !isOpen">
+                ドロップダウンメニュー
+            </button>
+            <div class="bg-white absolute w-56 right-0 my-2 py-1 shadow-lg rounded-md" x-show="isOpen"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-90"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 transform scale-100"
+                x-transition:leave-end="opacity-0 transform scale-90">
+                <a href="#" class="block p-2 hover:bg-gray-100">Link1</a>
+                <a href="#" class="block p-2 hover:bg-gray-100">Link2</a>
+                <a href="#" class="block p-2 hover:bg-gray-100">Link3</a>
+            </div>
+        </div>
+    </header>
+    <main class="m-4">
+        <p>ここからがコンテンツ</p>
+    </main>
+</body>
+
+</html>
