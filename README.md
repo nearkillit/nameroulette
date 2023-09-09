@@ -15,6 +15,6 @@
 
 ## demo
 
-[普通に当たると](./demo_slot.mp4)
+[普通に当たると](./demo_slot.gif)
 
-[たまに...](./demo_slot.mp4)
+[たまに...](./demo_slot.gif)
