@@ -15,6 +15,6 @@
 
 ## demo
 
-[普通に当たると](https://raw.github.com/wiki/nearkillit/slotmachine/images/demo_slot.gif)
+![普通に当たると](https://raw.github.com/wiki/nearkillit/slotmachine/images/demo_slot.gif)
 
-[たまに...](https://raw.github.com/wiki/nearkillit/slotmachine/images/demo_reslot.gif)
+![たまに...](https://raw.github.com/wiki/nearkillit/slotmachine/images/demo_reslot.gif)
