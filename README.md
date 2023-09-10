@@ -1,4 +1,4 @@
-# 名前スロット
+# 名前ルーレット
 
 ## How to
 
@@ -15,6 +15,11 @@
 
 ## demo
 
-[普通に当たると](https://raw.github.com/wiki/nearkillit/slotmachine/images/demo_slot.gif)
+普通に当たると
 
-[たまに...](https://raw.github.com/wiki/nearkillit/slotmachine/images/demo_reslot.gif)
+https://github.com/nearkillit/slotmachine/assets/82208192/dca30fd6-ba18-4e3b-a703-bfeb236edb18
+
+たまに...
+
+https://github.com/nearkillit/slotmachine/assets/82208192/75f503ea-33f9-4b00-8974-73bebe34a3ef
+
