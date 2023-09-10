@@ -24,4 +24,5 @@ https://github.com/nearkillit/slotmachine/assets/82208192/dca30fd6-ba18-4e3b-a70
 https://github.com/nearkillit/slotmachine/assets/82208192/75f503ea-33f9-4b00-8974-73bebe34a3ef
 
 ## 誕生秘話
+
 https://zenn.dev/killit/articles/19c6240b5b63ee
