@@ -36,6 +36,70 @@
             }
         }
 
+        @media(400px <=width < 800px) {
+            .sparkling-text {
+                animation: sparkle 1.5s infinite alternate;
+                font-size: 45px;
+                transition: font-size 500ms;
+            }
+
+            .side-text {
+                font-size: 20px;
+            }
+
+            .main-text {
+                font-size: 35px;
+            }
+        }
+
+        @media(800px <=width < 1200px) {
+            .sparkling-text {
+                animation: sparkle 1.5s infinite alternate;
+                font-size: 90px;
+                transition: font-size 500ms;
+            }
+
+            .side-text {
+                font-size: 50px;
+            }
+
+            .main-text {
+                font-size: 80px;
+            }
+        }
+
+        @media(1200px <=width < 1920px) {
+            .sparkling-text {
+                animation: sparkle 1.5s infinite alternate;
+                font-size: 140px;
+                transition: font-size 500ms;
+            }
+
+            .side-text {
+                font-size: 80px;
+            }
+
+            .main-text {
+                font-size: 120px;
+            }
+        }
+
+        @media(1920px <=width) {
+            .sparkling-text {
+                animation: sparkle 1.5s infinite alternate;
+                font-size: 220px;
+                transition: font-size 500ms;
+            }
+
+            .side-text {
+                font-size: 140px;
+            }
+
+            .main-text {
+                font-size: 190px;
+            }
+        }
+
         .sparkling-text {
             animation: sparkle 1.5s infinite alternate;
             font-size: 240px;
@@ -49,31 +113,32 @@
         <button class="h-screen w-screen" :disabled="isDisabled" @click="toggle">
             <div class="text-center w-screen h-screen flex items-center justify-center relative overflow-hidden">
                 <div class="absolute" :style="{
-                                    transform: `translateX(${(isRunning ? positionX : 0 ) - 1920}px)`,
-                                    transition: `transform ${isRunning ? 0 : 500}ms, font-size 1000ms`,
-                                    fontSize: `${isRunning && isOneMove ? strSmall : strNormal}px`}">
+                                    transform: `translateX(${(isRunning ? positionX : 0 ) - wScreen}px)`,
+                                    transition: `transform ${isRunning ? 0 : 500}ms, font-size 1000ms`}">
                     <span class="font-bold whitespace-nowrap"
+                        :class="`${isRunning && isOneMove ? 'side-text' : 'main-text'}`"
                         x-text="names[sCount >= (names.length - 2) ?  (sCount + 2) - names.length : sCount + 2]"></span>
                 </div>
                 <div class="absolute" :style="{
-                    transform: `translateX(${(isRunning ? positionX : 0 ) - 960}px)`,
-                    transition: `transform ${isRunning ? 0 : 500}ms, font-size 1000ms`,
-                    fontSize: `${isRunning ? strNormal : strSmall}px`}">
+                    transform: `translateX(${(isRunning ? positionX : 0 ) - wScreen / 2}px)`,
+                    transition: `transform ${isRunning ? 0 : 500}ms, font-size 1000ms`}">
                     <span class="font-bold whitespace-nowrap"
+                        :class="`${isRunning && isOneMove ? 'main-text' : 'side-text'}`"
                         x-text="names[sCount >= (names.length - 1) ? 0 : sCount +1]"></span>
                 </div>
                 <div class="absolute" :style="{
-                    transform: `translateX(${(isRunning ? positionX : 0 ) + 960}px)`,
-                    transition: `transform ${isRunning ? 0 : 500}ms, font-size 1000ms`,
-                    fontSize: `${isRunning ? strNormal : strSmall}px`}">
+                    transform: `translateX(${(isRunning ? positionX : 0 ) + wScreen / 2}px)`,
+                    transition: `transform ${isRunning ? 0 : 500}ms, font-size 1000ms`}">
                     <span class="font-bold whitespace-nowrap"
+                        :class="`${isRunning && isOneMove ? 'main-text' : 'side-text'}`"
                         x-text="names[(sCount <= 0 ? names.length : sCount)-1]"></span>
                 </div>
-                <div class="absolute" :style="{
+                <div class="absolute"
+                    :style="{
                         transform: `translateX(${isRunning ? positionX : 0}px)`,
-                        transition: `transform ${isRunning ? 0 : 500}ms, font-size ${(positionX >= 950 || positionX <= 10 )? 0 : 1000}ms`,
-                        fontSize: `${(positionX >= 950 || positionX <= 10 )? strNormal : strSmall}px`}">
-                    <span class="font-bold whitespace-nowrap" :class="isSelected && 'sparkling-text'"
+                        transition: `transform ${isRunning ? 0 : 500}ms, font-size ${(positionX >= (wScreen / 2 - 10) || positionX <= 10 )? 0 : 1000}ms`}">
+                    <span class="font-bold whitespace-nowrap"
+                        :class="`${isSelected && 'sparkling-text'} ${(positionX >= (wScreen / 2 - 10) || positionX <= 10 ) ? 'main-text' : 'side-text'}`"
                         x-text="names[sCount]"></span>
                 </div>
             </div>
@@ -104,7 +169,7 @@
                 x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="opacity-100 transform scale-100"
                 x-transition:leave-end="opacity-0 transform scale-90">
-                <p>※カンマ区切りで名前を入れてください</p>
+                <p>※カンマ区切りで名前を入れてください（９文字くらいでで見切れます）</p>
                 <p x-show="isError" class="text-red-500">※3人以上入れてください</p>
                 <textarea x-model="name" class="resize-y block w-full px-4 py-2 border rounded-lg" rows="12"></textarea>
                 <button @click="defineName"
@@ -137,6 +202,7 @@
                 isOpen: false,
                 isDefine: false,
                 isError: false,
+                wScreen: window.innerWidth,
                 id: 0,
                 positionTimer: null,
                 toggle() {
