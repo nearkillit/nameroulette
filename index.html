@@ -84,20 +84,14 @@
             }
         }
 
-        @media(1920px <=width) {
-            .sparkling-text {
-                animation: sparkle 1.5s infinite alternate;
-                font-size: 220px;
-                transition: font-size 500ms;
-            }
+        .side-text {
+            font-size: 140px;
+            transition: font-size 1000ms;
+        }
 
-            .side-text {
-                font-size: 140px;
-            }
-
-            .main-text {
-                font-size: 190px;
-            }
+        .main-text {
+            font-size: 190px;
+            transition: font-size 1000ms;
         }
 
         .sparkling-text {
@@ -114,31 +108,31 @@
             <div class="text-center w-screen h-screen flex items-center justify-center relative overflow-hidden">
                 <div class="absolute" :style="{
                                     transform: `translateX(${(isRunning ? positionX : 0 ) - wScreen}px)`,
-                                    transition: `transform ${isRunning ? 0 : 500}ms, font-size 1000ms`}">
+                                    transition: `transform ${isRunning ? 0 : 500}ms`}">
                     <span class="font-bold whitespace-nowrap"
                         :class="`${isRunning && isOneMove ? 'side-text' : 'main-text'}`"
                         x-text="names[sCount >= (names.length - 2) ?  (sCount + 2) - names.length : sCount + 2]"></span>
                 </div>
                 <div class="absolute" :style="{
                     transform: `translateX(${(isRunning ? positionX : 0 ) - wScreen / 2}px)`,
-                    transition: `transform ${isRunning ? 0 : 500}ms, font-size 1000ms`}">
+                    transition: `transform ${isRunning ? 0 : 500}ms`}">
                     <span class="font-bold whitespace-nowrap"
                         :class="`${isRunning && isOneMove ? 'main-text' : 'side-text'}`"
                         x-text="names[sCount >= (names.length - 1) ? 0 : sCount +1]"></span>
                 </div>
                 <div class="absolute" :style="{
                     transform: `translateX(${(isRunning ? positionX : 0 ) + wScreen / 2}px)`,
-                    transition: `transform ${isRunning ? 0 : 500}ms, font-size 1000ms`}">
+                    transition: `transform ${isRunning ? 0 : 500}ms`}">
                     <span class="font-bold whitespace-nowrap"
                         :class="`${isRunning && isOneMove ? 'main-text' : 'side-text'}`"
                         x-text="names[(sCount <= 0 ? names.length : sCount)-1]"></span>
                 </div>
-                <div class="absolute"
-                    :style="{
+                <div class="absolute" :style="{
                         transform: `translateX(${isRunning ? positionX : 0}px)`,
-                        transition: `transform ${isRunning ? 0 : 500}ms, font-size ${(positionX >= (wScreen / 2 - 10) || positionX <= 10 )? 0 : 1000}ms`}">
+                        transition: `transform ${isRunning ? 0 : 500}ms`
+                    }">
                     <span class="font-bold whitespace-nowrap"
-                        :class="`${isSelected && 'sparkling-text'} ${(positionX >= (wScreen / 2 - 10) || positionX <= 10 ) ? 'main-text' : 'side-text'}`"
+                        :class="`${(positionX >= (wScreen / 2 - 10) || positionX <= 10 ) ? 'main-text' : 'side-text'} ${isSelected && 'sparkling-text'}`"
                         x-text="names[sCount]"></span>
                 </div>
             </div>
@@ -262,7 +256,7 @@
                             this.isDisabled = false
                             setTimeout(() => {
                                 this.isRunning = false
-                            }, 12)
+                            }, 1000)
                         }
                         else {
                             this.positionX += 6
