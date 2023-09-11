@@ -1,4 +1,4 @@
-# 名前ルーレット
+# 名前ルーレット https://nearkillit.github.io/nameroulette/
 ## 使い所
 
 結婚式の２次会や、学校・会社のイベントでどうぞ！
